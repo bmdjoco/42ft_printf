@@ -6,14 +6,13 @@
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 08:55:01 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/05/21 11:47:35 by bdjoco           ###   ########.fr       */
+/*   Updated: 2025/05/29 10:03:24 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "lib/Libft/libft.h"
 # include <unistd.h>
 # include <string.h>
 # include <stdio.h>
@@ -32,8 +31,13 @@ int		ft_putchar_fd_bis(char c);
 
 void	ft_putnbr_hex(int n);
 void	ft_putnbr_hex_up(int n);
-void	ft_putnbr_hex_addr(unsigned long n);
 void	t_is_char(va_list args);
+void	ft_putnbr_fd(int n, int fd);
 void	ft_putnbr_uns(unsigned int n);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putnbr_hex_addr(unsigned long n);
+
+size_t	ft_strlen(const char *str);
 
 #endif

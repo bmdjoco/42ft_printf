@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/05 20:01:54 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/05/05 21:07:55 by bdjoco           ###   ########.fr       */
+/*   Created: 2025/05/01 13:35:42 by bdjoco            #+#    #+#             */
+/*   Updated: 2025/05/29 10:03:55 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*tmp;
+	size_t	i;
 
-	tmp = lst;
-	while (tmp)
+	i = 0;
+	while (s[i])
 	{
-		f(tmp->content);
-		tmp = tmp->next;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
 }

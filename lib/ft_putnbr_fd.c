@@ -1,42 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bdjoco <bdjoco@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/27 13:09:29 by bdjoco            #+#    #+#             */
-/*   Updated: 2025/05/05 16:55:29 by bdjoco           ###   ########.fr       */
+/*   Created: 2025/05/01 13:39:44 by bdjoco            #+#    #+#             */
+/*   Updated: 2025/05/29 10:04:09 by bdjoco           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-char	*ft_strrchr(char *str, int to_find)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		i;
-	char	*res;
-
-	i = 0;
-	res = NULL;
-	while (str[i])
+	if (n == -2147483648)
 	{
-		if (str[i] == (char) to_find)
-			res = (char *)&str[i];
-		i++;
+		write(fd, "-2147483648", 11);
+		return ;
 	}
-	if (str[i] == (char) to_find)
-		res = (char *)&str[i];
-	return (res);
+	if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		n = -n;
+	}
+	if (n >= 0 && n < 10)
+		ft_putchar_fd(n + '0', fd);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
 }
 /*
-#include <stdio.h>
 int main(void)
 {
-	char *str = "/folder/image.jpg";
-	printf("Original | %s\n", str);
-	printf("Reponse | %s\n", ft_strrchr(str, '/'));
-
+	ft_putnbr_fd(850, 1);
 	return 0;
 }
 */
